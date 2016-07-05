@@ -6,6 +6,9 @@
 node query.js
 
 ##TODO
-订阅推送API
-在线下单API
-电子面单API
+- [x] 即时查询API
+- [ ] 订阅推送API
+
+
+- [ ] 在线下单API
+- [ ] 电子面单API
