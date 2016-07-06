@@ -1,12 +1,12 @@
 {
   "name": "kdniao_js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "query.js",
+  "version": "0.0.1",
+  "description": "快递鸟API for nodejs",
+  "main": "kdniao.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Patrick",
   "license": "ISC",
   "dependencies": {
     "request": "^2.72.0"
