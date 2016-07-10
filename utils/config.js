@@ -4,7 +4,7 @@ var config = {
         //在线下单url
         orderServiceUrl : "http://testapi.kdniao.cc:8081/api/oorderservice/",
         //快递查询
-	    baseUrl : "http://api.kdniao.cc:8081/Ebusiness/EbusinessOrderHandle.aspx"
+	    baseUrl : "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx"
 
     },
     product:{
@@ -12,7 +12,7 @@ var config = {
         //在线下单url
         orderServiceUrl : "http://testapi.kdniao.cc:8081/api/oorderservice/",
         //快递查询
-	    baseUrl : "http://api.kdniao.cc:8081/Ebusiness/EbusinessOrderHandle.aspx"
+	    baseUrl : "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx"
     }
 }
 
