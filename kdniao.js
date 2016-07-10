@@ -1,10 +1,25 @@
 //快递鸟快递API
 var request = require('request');
 var tools = require('./utils/kdniaotools')
+var config;
 
-function KDNiao(businessId, appkey) {
+/**
+ * @param businessId
+ * @param appkey
+ * @param environment 环境 test / product
+ */
+function KDNiao(businessId, appkey, environment) {
     checkArgs(businessId, "businessId")
     checkArgs(appkey, "appkey")
+    checkArgs(environment,"environment")
+
+    if(environment == "test"){
+        config = require('./utils/config').test
+    }else if(environment == "product"){
+        config = require('./utils/config').product
+    }else{
+        throw new Error('environment must be test or product !')
+    }
 
     this.businessId = businessId;
     this.appkey = appkey;
@@ -34,7 +49,7 @@ KDNiao.prototype.queryExpress = function(companyCode, expCode, callback) {
 
     var sysParams = tools.createSysParams(1002, this.businessId, requestData, dataSign)
 
-    var requestObj = tools.createRequest("http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx", sysParams)
+    var requestObj = tools.createRequest(config.baseUrl, sysParams)
 
     request(requestObj, function(error, response, body) {
         if (error) {
@@ -74,12 +89,12 @@ KDNiao.prototype.orderOnline = function(companyCode, orderCode, payType, expType
         Sender: sender,
         Commodity: commodity
     }
-    var s = JSON.stringify(requestData)
+
     var dataSign = tools.encrypt(requestData, this.appkey, "utf8")
 
     var sysParams = tools.createSysParams(1001, this.businessId, requestData, dataSign)
 
-    var requestObj = tools.createRequest("http://testapi.kdniao.cc:8081/api/oorderservice/", sysParams)
+    var requestObj = tools.createRequest(config.orderServiceUrl, sysParams)
 
     request(requestObj, function(error, response, body) {
         if (error) {
